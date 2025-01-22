@@ -1,14 +1,14 @@
 #! /bin/bash
 
 # Clone pallets/flask
-git clone https://github.com/pallets/flask.git --depth 1
+git clone https://github.com/pallets/flask.git --depth=1
 
 # Create workflows directory if it doesn't exist
 mkdir -p .github/workflows/
 
 
 # Copy the workflow
-cp -r temp-pallets/flask/.github/workflows/tests.yml .github/workflows/benchmark.yml
+cp -r temp-flask/.github/workflows/tests.yml .github/workflows/benchmark.yml
 
 # Modify with yq
 yq -P -i '.on = {"workflow_dispatch": {}, "schedule": [{"cron": "15 */12 * * *"}]}' .github/workflows/benchmark.yml
@@ -28,5 +28,5 @@ git config --local user.email "$1"
 git config --local user.name "$2"
 git remote set-url origin https://$GHA_BENCHMARK@github.com/devzero-inc/gha-benchmark-flask.git
 git add .github/workflows/benchmark.yml
-git commit -m "Setup tinkerpop runtime tests workflow" || echo "No changes to commit"
+git commit -m "Setup pallets/flask tests workflow" || echo "No changes to commit"
 git push origin main

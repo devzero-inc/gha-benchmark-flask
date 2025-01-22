@@ -21,10 +21,15 @@ jobs:
           - {name: PyPy, python: 'pypy-3.10', tox: pypy310}
           - {name: Minimum Versions, python: '3.12', tox: py-min}
           - {name: Development Versions, python: '3.9', tox: py-dev}
-          - {os: ubuntu-24.04}
-          - {os: devzero-ubuntu-24.04}
+        os:
+          - ubuntu-24.04
+          - devzero-ubuntu-24.04
+
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: main
+          repository: pallets/flask
       - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
         with:
           python-version: ${{ matrix.python }}
@@ -37,6 +42,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: main
+          repository: pallets/flask
       - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
         with:
           python-version: '3.x'

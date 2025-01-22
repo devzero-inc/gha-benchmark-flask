@@ -28,4 +28,4 @@ jobs:
         env:
           GHA_BENCHMARK: ${{ secrets.GHA_BENCHMARK }}
         run: |
-          ./.github/scripts/sync-tinkerpop-workflow.sh "dray92@uw.edu" "debot"
+          ./.github/scripts/sync-flask-workflow.sh "dray92@uw.edu" "debot"
