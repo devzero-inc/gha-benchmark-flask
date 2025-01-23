@@ -1,10 +1,8 @@
 name: Tests
 on:
-  push:
-    branches: [main, stable]
-    paths-ignore: ['docs/**', '*.md', '*.rst']
-  pull_request:
-    paths-ignore: [ 'docs/**', '*.md', '*.rst' ]
+  workflow_dispatch: {}
+  schedule:
+    - cron: 15 */12 * * *
 jobs:
   tests:
     name: ${{ matrix.name || matrix.python }}
@@ -13,18 +11,23 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {python: '3.13'}
-          - {python: '3.12'}
-          - {python: '3.11'}
-          - {python: '3.10'}
-          - {python: '3.9'}
-          - {name: PyPy, python: 'pypy-3.10', tox: pypy310}
-          - {name: Minimum Versions, python: '3.12', tox: py-min}
-          - {name: Development Versions, python: '3.9', tox: py-dev}
+          - python: "3.13"
+          - python: "3.12"
+          - python: "3.11"
+          - python: "3.10"
+          - python: "3.9"
+          - name: PyPy
+            python: pypy-3.10
+            tox: pypy310
+          - name: Minimum Versions
+            python: "3.12"
+            tox: py-min
+          - name: Development Versions
+            python: "3.9"
+            tox: py-dev
         os:
           - ubuntu-24.04
           - devzero-ubuntu-24.04
-
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
@@ -47,7 +50,7 @@ jobs:
           repository: pallets/flask
       - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
         with:
-          python-version: '3.x'
+          python-version: 3.x
           cache: pip
           cache-dependency-path: requirements*/*.txt
       - name: cache mypy
