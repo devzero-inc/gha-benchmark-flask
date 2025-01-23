@@ -24,6 +24,13 @@ jobs:
             sudo chmod a+x /usr/local/bin/yq
           fi
 
+      - name: Ensure sync script has correct permissions
+        run: |
+          # Make sure the script is executable and owned correctly
+          chmod 755 ./.github/scripts/sync-flask-workflow.sh
+          chown $USER:$USER ./.github/scripts/sync-flask-workflow.sh
+
+
       - name: Run sync script
         env:
           GHA_BENCHMARK: ${{ secrets.GHA_BENCHMARK }}
