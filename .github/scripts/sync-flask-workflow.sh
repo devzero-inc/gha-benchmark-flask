@@ -8,7 +8,7 @@ mkdir -p .github/workflows/
 
 
 # Copy the workflow
-cp -r temp-flask/.github/workflows/tests.yml .github/workflows/benchmark.yml
+cp temp-flask/.github/workflows/tests.yml .github/workflows/benchmark.yml
 
 # Modify with yq
 yq -P -i '.on = {"workflow_dispatch": {}, "schedule": [{"cron": "15 */12 * * *"}]}' .github/workflows/benchmark.yml
@@ -21,12 +21,12 @@ yq -P -i '(.jobs.*.steps.[] | select(.uses == "actions/checkout@v3").with.reposi
 yq -P -i '(.jobs.*.steps.[] | select(.uses == "actions/checkout@v3").with.ref) = "main"' .github/workflows/benchmark.yml
 
 # Clean up
-rm -rf temp-pallets
+rm -rf temp-flask
 
 # Configure git and commit
 git config --local user.email "$1"
 git config --local user.name "$2"
 git remote set-url origin https://$GHA_BENCHMARK@github.com/devzero-inc/gha-benchmark-flask.git
 git add .github/workflows/benchmark.yml
-git commit -m "Setup pallets/flask tests workflow" || echo "No changes to commit"
+git commit -m "Setup flask tests workflow" || echo "No changes to commit"
 git push origin main
