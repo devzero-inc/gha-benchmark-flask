@@ -66,5 +66,5 @@ jobs:
           - ubuntu-24.04
           - devzero-ubuntu-24.04
           - devzero-ubuntu-24.04-lab
-          - devzero-ubuntu-24.04-lab-overlayfs
+          - devzero-ubuntu-24.04-lab-kata-overlayfs
           - devzero-ubuntu-24.04-sysbox
