@@ -65,3 +65,6 @@ jobs:
         os:
           - ubuntu-24.04
           - devzero-ubuntu-24.04
+          - devzero-ubuntu-24.04-lab
+          - devzero-ubuntu-24.04-lab-overlay-fs
+          - devzero-ubuntu-24.04-sysbox
