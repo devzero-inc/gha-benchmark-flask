@@ -68,4 +68,4 @@ jobs:
           - devzero-ubuntu-24.04-lab
           - devzero-ubuntu-24.04-lab-kata-overlayfs
           - devzero-ubuntu-24.04-sysbox
-          - self-hosted-vm
+          - devzero-ubuntu-24.04-bare-metal
