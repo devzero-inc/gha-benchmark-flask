@@ -5,7 +5,7 @@ on:
     - cron: 15 */12 * * *
 jobs:
   tests:
-    name: ${{ matrix.name || matrix.python }}
+    name: ${{ matrix.name || matrix.python }} (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
