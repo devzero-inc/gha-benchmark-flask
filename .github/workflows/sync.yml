@@ -2,9 +2,6 @@ name: Setup Flask Test
 
 on:
   workflow_dispatch: {}
-  schedule:
-    # https://crontab.guru/#5_*/1_*_*_*
-    - cron: "5 */1 * * *"
 
 permissions: write-all
 
