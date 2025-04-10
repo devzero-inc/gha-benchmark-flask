@@ -1,8 +1,6 @@
 name: Tests
 on:
   workflow_dispatch: {}
-  schedule:
-    - cron: 15 */12 * * *
 jobs:
   tests:
     name: ${{ matrix.name || matrix.python }} (${{ matrix.os }})
